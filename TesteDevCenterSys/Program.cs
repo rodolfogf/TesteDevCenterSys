@@ -1,4 +1,24 @@
+using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
+using TesteDevCenterSys.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("TesteDevConnection");
+
+builder.Services.AddDbContext<TesteDevContext>(opts => opts.UseMySql(
+    connectionString,
+    ServerVersion.AutoDetect(connectionString)));
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddControllers().AddNewtonsoftJson();
+
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+    });
+
 
 // Add services to the container.
 
