@@ -1,5 +1,84 @@
 [
   {
+    "ContainingType": "TesteDevCenterSys.Controllers.VendaController",
+    "Method": "RetornaVendaPorId",
+    "RelativePath": "{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TesteDevCenterSys.Controllers.VendaController",
+    "Method": "AtualizaVenda",
+    "RelativePath": "{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "vendaDto",
+        "Type": "TesteDevCenterSys.Data.Dtos.UpdateVendaDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TesteDevCenterSys.Controllers.VendaController",
+    "Method": "AtualizaVendaParcial",
+    "RelativePath": "{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "Operations",
+        "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.JsonPatch.Operations.Operation\u00601[[TesteDevCenterSys.Data.Dtos.UpdateVendaDto, TesteDevCenterSys, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], Microsoft.AspNetCore.JsonPatch, Version=6.0.33.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContractResolver",
+        "Type": "Newtonsoft.Json.Serialization.IContractResolver",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TesteDevCenterSys.Controllers.VendaController",
+    "Method": "DeletaVenda",
+    "RelativePath": "{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "TesteDevCenterSys.Controllers.AcessoController",
     "Method": "Get",
     "RelativePath": "Acesso",

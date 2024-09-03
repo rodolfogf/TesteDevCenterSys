@@ -3,12 +3,36 @@
   "WorkspaceRootPath": "C:\\_Dev\\Projetos\\DotNet\\TesteDevCenterSys\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4AC1ABEC-A38F-482F-94BE-A3CABBA8762E}|TesteDevCenterSys\\TesteDevCenterSys.csproj|c:\\_dev\\projetos\\dotnet\\testedevcentersys\\testedevcentersys\\migrations\\20240902025830_tabelasprodutovendedor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AC1ABEC-A38F-482F-94BE-A3CABBA8762E}|TesteDevCenterSys\\TesteDevCenterSys.csproj|solutionrelative:testedevcentersys\\migrations\\20240902025830_tabelasprodutovendedor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4AC1ABEC-A38F-482F-94BE-A3CABBA8762E}|TesteDevCenterSys\\TesteDevCenterSys.csproj|c:\\_dev\\projetos\\dotnet\\testedevcentersys\\testedevcentersys\\migrations\\20240903144744_tabelasdevenda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AC1ABEC-A38F-482F-94BE-A3CABBA8762E}|TesteDevCenterSys\\TesteDevCenterSys.csproj|solutionrelative:testedevcentersys\\migrations\\20240903144744_tabelasdevenda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4AC1ABEC-A38F-482F-94BE-A3CABBA8762E}|TesteDevCenterSys\\TesteDevCenterSys.csproj|c:\\_dev\\projetos\\dotnet\\testedevcentersys\\testedevcentersys\\controllers\\produtocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AC1ABEC-A38F-482F-94BE-A3CABBA8762E}|TesteDevCenterSys\\TesteDevCenterSys.csproj|solutionrelative:testedevcentersys\\controllers\\produtocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4AC1ABEC-A38F-482F-94BE-A3CABBA8762E}|TesteDevCenterSys\\TesteDevCenterSys.csproj|c:\\_dev\\projetos\\dotnet\\testedevcentersys\\testedevcentersys\\models\\vendaproduto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AC1ABEC-A38F-482F-94BE-A3CABBA8762E}|TesteDevCenterSys\\TesteDevCenterSys.csproj|solutionrelative:testedevcentersys\\models\\vendaproduto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AC1ABEC-A38F-482F-94BE-A3CABBA8762E}|TesteDevCenterSys\\TesteDevCenterSys.csproj|c:\\_dev\\projetos\\dotnet\\testedevcentersys\\testedevcentersys\\models\\venda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AC1ABEC-A38F-482F-94BE-A3CABBA8762E}|TesteDevCenterSys\\TesteDevCenterSys.csproj|solutionrelative:testedevcentersys\\models\\venda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AC1ABEC-A38F-482F-94BE-A3CABBA8762E}|TesteDevCenterSys\\TesteDevCenterSys.csproj|c:\\_dev\\projetos\\dotnet\\testedevcentersys\\testedevcentersys\\data\\testedevdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AC1ABEC-A38F-482F-94BE-A3CABBA8762E}|TesteDevCenterSys\\TesteDevCenterSys.csproj|solutionrelative:testedevcentersys\\data\\testedevdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AC1ABEC-A38F-482F-94BE-A3CABBA8762E}|TesteDevCenterSys\\TesteDevCenterSys.csproj|c:\\_dev\\projetos\\dotnet\\testedevcentersys\\testedevcentersys\\controllers\\vendacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AC1ABEC-A38F-482F-94BE-A3CABBA8762E}|TesteDevCenterSys\\TesteDevCenterSys.csproj|solutionrelative:testedevcentersys\\controllers\\vendacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AC1ABEC-A38F-482F-94BE-A3CABBA8762E}|TesteDevCenterSys\\TesteDevCenterSys.csproj|c:\\_dev\\projetos\\dotnet\\testedevcentersys\\testedevcentersys\\profiles\\vendaprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AC1ABEC-A38F-482F-94BE-A3CABBA8762E}|TesteDevCenterSys\\TesteDevCenterSys.csproj|solutionrelative:testedevcentersys\\profiles\\vendaprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AC1ABEC-A38F-482F-94BE-A3CABBA8762E}|TesteDevCenterSys\\TesteDevCenterSys.csproj|c:\\_dev\\projetos\\dotnet\\testedevcentersys\\testedevcentersys\\services\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AC1ABEC-A38F-482F-94BE-A3CABBA8762E}|TesteDevCenterSys\\TesteDevCenterSys.csproj|solutionrelative:testedevcentersys\\services\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AC1ABEC-A38F-482F-94BE-A3CABBA8762E}|TesteDevCenterSys\\TesteDevCenterSys.csproj|c:\\_dev\\projetos\\dotnet\\testedevcentersys\\testedevcentersys\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AC1ABEC-A38F-482F-94BE-A3CABBA8762E}|TesteDevCenterSys\\TesteDevCenterSys.csproj|solutionrelative:testedevcentersys\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,28 +47,104 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "20240902025830_TabelasProdutoVendedor.cs",
-              "DocumentMoniker": "C:\\_Dev\\Projetos\\DotNet\\TesteDevCenterSys\\TesteDevCenterSys\\Migrations\\20240902025830_TabelasProdutoVendedor.cs",
-              "RelativeDocumentMoniker": "TesteDevCenterSys\\Migrations\\20240902025830_TabelasProdutoVendedor.cs",
-              "ToolTip": "C:\\_Dev\\Projetos\\DotNet\\TesteDevCenterSys\\TesteDevCenterSys\\Migrations\\20240902025830_TabelasProdutoVendedor.cs",
-              "RelativeToolTip": "TesteDevCenterSys\\Migrations\\20240902025830_TabelasProdutoVendedor.cs",
+              "Title": "20240903144744_TabelasDeVenda.cs",
+              "DocumentMoniker": "C:\\_Dev\\Projetos\\DotNet\\TesteDevCenterSys\\TesteDevCenterSys\\Migrations\\20240903144744_TabelasDeVenda.cs",
+              "RelativeDocumentMoniker": "TesteDevCenterSys\\Migrations\\20240903144744_TabelasDeVenda.cs",
+              "ToolTip": "C:\\_Dev\\Projetos\\DotNet\\TesteDevCenterSys\\TesteDevCenterSys\\Migrations\\20240903144744_TabelasDeVenda.cs",
+              "RelativeToolTip": "TesteDevCenterSys\\Migrations\\20240903144744_TabelasDeVenda.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T02:58:31.215Z",
+              "WhenOpened": "2024-09-03T14:47:45.667Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "VendaProfile.cs",
+              "DocumentMoniker": "C:\\_Dev\\Projetos\\DotNet\\TesteDevCenterSys\\TesteDevCenterSys\\Profiles\\VendaProfile.cs",
+              "RelativeDocumentMoniker": "TesteDevCenterSys\\Profiles\\VendaProfile.cs",
+              "ToolTip": "C:\\_Dev\\Projetos\\DotNet\\TesteDevCenterSys\\TesteDevCenterSys\\Profiles\\VendaProfile.cs",
+              "RelativeToolTip": "TesteDevCenterSys\\Profiles\\VendaProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T01:34:45.998Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "VendaController.cs",
+              "DocumentMoniker": "C:\\_Dev\\Projetos\\DotNet\\TesteDevCenterSys\\TesteDevCenterSys\\Controllers\\VendaController.cs",
+              "RelativeDocumentMoniker": "TesteDevCenterSys\\Controllers\\VendaController.cs",
+              "ToolTip": "C:\\_Dev\\Projetos\\DotNet\\TesteDevCenterSys\\TesteDevCenterSys\\Controllers\\VendaController.cs",
+              "RelativeToolTip": "TesteDevCenterSys\\Controllers\\VendaController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T01:29:34.653Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ProdutoController.cs",
-              "DocumentMoniker": "C:\\_Dev\\Projetos\\DotNet\\TesteDevCenterSys\\TesteDevCenterSys\\Controllers\\ProdutoController.cs",
-              "RelativeDocumentMoniker": "TesteDevCenterSys\\Controllers\\ProdutoController.cs",
-              "ToolTip": "C:\\_Dev\\Projetos\\DotNet\\TesteDevCenterSys\\TesteDevCenterSys\\Controllers\\ProdutoController.cs",
-              "RelativeToolTip": "TesteDevCenterSys\\Controllers\\ProdutoController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAD4AAAAUAAAAAAAAAA==",
+              "Title": "VendaProduto.cs",
+              "DocumentMoniker": "C:\\_Dev\\Projetos\\DotNet\\TesteDevCenterSys\\TesteDevCenterSys\\Models\\VendaProduto.cs",
+              "RelativeDocumentMoniker": "TesteDevCenterSys\\Models\\VendaProduto.cs",
+              "ToolTip": "C:\\_Dev\\Projetos\\DotNet\\TesteDevCenterSys\\TesteDevCenterSys\\Models\\VendaProduto.cs",
+              "RelativeToolTip": "TesteDevCenterSys\\Models\\VendaProduto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T02:55:23.114Z",
+              "WhenOpened": "2024-09-03T01:02:18.892Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TesteDevDbContext.cs",
+              "DocumentMoniker": "C:\\_Dev\\Projetos\\DotNet\\TesteDevCenterSys\\TesteDevCenterSys\\Data\\TesteDevDbContext.cs",
+              "RelativeDocumentMoniker": "TesteDevCenterSys\\Data\\TesteDevDbContext.cs",
+              "ToolTip": "C:\\_Dev\\Projetos\\DotNet\\TesteDevCenterSys\\TesteDevCenterSys\\Data\\TesteDevDbContext.cs",
+              "RelativeToolTip": "TesteDevCenterSys\\Data\\TesteDevDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T00:51:26.955Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Venda.cs",
+              "DocumentMoniker": "C:\\_Dev\\Projetos\\DotNet\\TesteDevCenterSys\\TesteDevCenterSys\\Models\\Venda.cs",
+              "RelativeDocumentMoniker": "TesteDevCenterSys\\Models\\Venda.cs",
+              "ToolTip": "C:\\_Dev\\Projetos\\DotNet\\TesteDevCenterSys\\TesteDevCenterSys\\Models\\Venda.cs",
+              "RelativeToolTip": "TesteDevCenterSys\\Models\\Venda.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T00:43:27.582Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\_Dev\\Projetos\\DotNet\\TesteDevCenterSys\\TesteDevCenterSys\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "TesteDevCenterSys\\Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\_Dev\\Projetos\\DotNet\\TesteDevCenterSys\\TesteDevCenterSys\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "TesteDevCenterSys\\Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAA9wDkAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T22:12:52.333Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UsuarioService.cs",
+              "DocumentMoniker": "C:\\_Dev\\Projetos\\DotNet\\TesteDevCenterSys\\TesteDevCenterSys\\Services\\UsuarioService.cs",
+              "RelativeDocumentMoniker": "TesteDevCenterSys\\Services\\UsuarioService.cs",
+              "ToolTip": "C:\\_Dev\\Projetos\\DotNet\\TesteDevCenterSys\\TesteDevCenterSys\\Services\\UsuarioService.cs",
+              "RelativeToolTip": "TesteDevCenterSys\\Services\\UsuarioService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T21:30:44.396Z"
             }
           ]
         }

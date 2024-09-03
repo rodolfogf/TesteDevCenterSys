@@ -12,5 +12,6 @@ namespace TesteDevCenterSys.Data
         }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Vendedor> Vendedores { get; set; }
+        public DbSet<Venda> Vendas { get; set; }
     }
 }
