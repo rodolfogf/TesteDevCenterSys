@@ -11,10 +11,10 @@ namespace TesteDevCenterSys.Controllers;
 [Route("[controller]")]
 public class ProdutoController : ControllerBase
 {
-    private TesteDevContext _context;
+    private TesteDevDbContext _context;
     private IMapper _mapper;
 
-    public ProdutoController(TesteDevContext context, IMapper mapper)
+    public ProdutoController(TesteDevDbContext context, IMapper mapper)
     {
         _context = context;
         _mapper = mapper;

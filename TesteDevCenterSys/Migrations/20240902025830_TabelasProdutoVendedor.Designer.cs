@@ -9,7 +9,7 @@ using TesteDevCenterSys.Data;
 
 namespace TesteDevCenterSys.Migrations
 {
-    [DbContext(typeof(TesteDevContext))]
+    [DbContext(typeof(TesteDevDbContext))]
     [Migration("20240902025830_TabelasProdutoVendedor")]
     partial class TabelasProdutoVendedor
     {

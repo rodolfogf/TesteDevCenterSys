@@ -11,10 +11,10 @@ namespace TesteDevCenterSys.Controllers;
 [Route("[controller]")]
 public class VendedorController : ControllerBase
 {
-    private TesteDevContext _context;
+    private TesteDevDbContext _context;
     private IMapper _mapper;
 
-    public VendedorController(TesteDevContext context, IMapper mapper)
+    public VendedorController(TesteDevDbContext context, IMapper mapper)
     {
         _context = context;
         _mapper = mapper;
