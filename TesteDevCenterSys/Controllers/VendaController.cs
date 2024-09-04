@@ -4,9 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 using TesteDevCenterSys.Data.Dtos;
 using TesteDevCenterSys.Data;
 using TesteDevCenterSys.Models;
+using Microsoft.Extensions.Options;
 
 namespace TesteDevCenterSys.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class VendaController : ControllerBase
     {
         private TesteDevDbContext _context;
@@ -21,16 +24,30 @@ namespace TesteDevCenterSys.Controllers
         [HttpPost]
         public IActionResult CadastraVenda([FromBody] CreateVendaDto vendaDto)
         {
-            Venda venda = _mapper.Map<Venda>(vendaDto);
-
-            // Busca o vendedor relacionado à venda
-            var vendedor = _context.Vendedores.FirstOrDefault(v => v.Id == venda.VendedorId);
+            var vendedor = _context.Vendedores.FirstOrDefault(v => v.Id == vendaDto.VendedorId);
             if (vendedor == null) return NotFound("Vendedor não encontrado.");
 
-            // Adiciona o valor da comissão ao total de comissões do vendedor
-            vendedor.ValorComissoes += venda.ComissaoVendedor;
+            Venda venda = _mapper.Map<Venda>(vendaDto);
+            venda.Vendedor = vendedor;
+
+            venda.VendaProdutos = new List<VendaProduto>();            
+            foreach(var vendaProdutoDto in vendaDto.VendaProdutos)            
+            {
+                var produto = _context.Produtos.FirstOrDefault(p => p.Id == vendaProdutoDto.ProdutoId);
+                if (produto == null) return NotFound("Produto não encontrado");
+
+                var vp = _mapper.Map<VendaProduto>(vendaProdutoDto);
+                vp.Produto = produto;
+                vp.Venda = venda;
+
+                venda.VendaProdutos.Add(vp);
+            }
 
             _context.Vendas.Add(venda);
+            _context.SaveChanges();
+
+
+            vendedor.ValorComissoes += venda.ComissaoVendedor;
             _context.SaveChanges();
 
             return CreatedAtAction(
@@ -42,7 +59,7 @@ namespace TesteDevCenterSys.Controllers
         [HttpGet]
         public IEnumerable<ReadVendaDto> RetornaVendas([FromQuery] int skip = 0, [FromQuery] int take = 10)
         {
-            return _mapper.Map<List<ReadVendaDto>>(_context.Vendas.Skip(skip).Take(take));
+            return _mapper.Map<List<ReadVendaDto>>(_context.Vendas.ToList().Skip(skip).Take(take));
         }
 
         [HttpGet("{id}")]
@@ -88,6 +105,11 @@ namespace TesteDevCenterSys.Controllers
         {
             var venda = _context.Vendas.FirstOrDefault(v => v.Id == id);
             if (venda == null) return NotFound();
+
+            var vendedor = _context.Vendedores.FirstOrDefault(vor => vor.Id == venda.VendedorId);
+            if (vendedor == null) return ValidationProblem();
+
+            vendedor.ValorComissoes -= venda.ComissaoVendedor;
 
             _context.Remove(venda);
             _context.SaveChanges();

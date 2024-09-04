@@ -21,7 +21,7 @@ public class VendedorController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult AdicionaVendedor([FromBody] CreateVendedorDto vendedorDto)
+    public IActionResult CadastraVendedor([FromBody] CreateVendedorDto vendedorDto)
     {
         Vendedor vendedor = _mapper.Map<Vendedor>(vendedorDto);
         _context.Vendedores.Add(vendedor);

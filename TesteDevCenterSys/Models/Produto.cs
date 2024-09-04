@@ -18,7 +18,4 @@ public class Produto
     [Required(ErrorMessage = "O valor é obrigatório.")]
     [RegularExpression(@"^\d+(\.\d{2})?$", ErrorMessage = "O valor deve ser um número com até duas casas decimais.")]
     public double Preco { get; set; }
-    [Required]
-    [Range(1, 99999)]
-    public int QuantidadeEstoque { get; set; }
 }

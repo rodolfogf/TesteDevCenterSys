@@ -17,8 +17,8 @@ builder.Services.AddDbContext<TesteDevDbContext>(opts =>
     );
 
 builder.Services.AddIdentity<Usuario, IdentityRole>()
-.AddEntityFrameworkStores<TesteDevDbContext>()
-.AddDefaultTokenProviders();
+    .AddEntityFrameworkStores<TesteDevDbContext>()
+    .AddDefaultTokenProviders();
 
 builder.Services.AddAuthentication(options =>
 {
@@ -35,6 +35,9 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+builder.Services.AddControllers()
+    .AddNewtonsoftJson(options =>
+        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<UsuarioService>();

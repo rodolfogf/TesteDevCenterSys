@@ -21,7 +21,7 @@ public class ProdutoController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult AdicionaProduto([FromBody] CreateProdutoDto produtoDto)
+    public IActionResult CadastraProduto([FromBody] CreateProdutoDto produtoDto)
     {
         var produto = _mapper.Map<Produto>(produtoDto);
         _context.Produtos.Add(produto);

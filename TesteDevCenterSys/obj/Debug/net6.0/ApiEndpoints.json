@@ -1,84 +1,5 @@
 [
   {
-    "ContainingType": "TesteDevCenterSys.Controllers.VendaController",
-    "Method": "RetornaVendaPorId",
-    "RelativePath": "{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "TesteDevCenterSys.Controllers.VendaController",
-    "Method": "AtualizaVenda",
-    "RelativePath": "{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "vendaDto",
-        "Type": "TesteDevCenterSys.Data.Dtos.UpdateVendaDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "TesteDevCenterSys.Controllers.VendaController",
-    "Method": "AtualizaVendaParcial",
-    "RelativePath": "{id}",
-    "HttpMethod": "PATCH",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "Operations",
-        "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.JsonPatch.Operations.Operation\u00601[[TesteDevCenterSys.Data.Dtos.UpdateVendaDto, TesteDevCenterSys, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], Microsoft.AspNetCore.JsonPatch, Version=6.0.33.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "ContractResolver",
-        "Type": "Newtonsoft.Json.Serialization.IContractResolver",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "TesteDevCenterSys.Controllers.VendaController",
-    "Method": "DeletaVenda",
-    "RelativePath": "{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "TesteDevCenterSys.Controllers.AcessoController",
     "Method": "Get",
     "RelativePath": "Acesso",
@@ -90,7 +11,7 @@
   },
   {
     "ContainingType": "TesteDevCenterSys.Controllers.ProdutoController",
-    "Method": "AdicionaProduto",
+    "Method": "CadastraProduto",
     "RelativePath": "Produto",
     "HttpMethod": "POST",
     "IsController": true,
@@ -299,8 +220,129 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "TesteDevCenterSys.Controllers.VendaController",
+    "Method": "CadastraVenda",
+    "RelativePath": "Venda",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "vendaDto",
+        "Type": "TesteDevCenterSys.Data.Dtos.CreateVendaDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TesteDevCenterSys.Controllers.VendaController",
+    "Method": "RetornaVendas",
+    "RelativePath": "Venda",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "skip",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "take",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[TesteDevCenterSys.Data.Dtos.ReadVendaDto, TesteDevCenterSys, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TesteDevCenterSys.Controllers.VendaController",
+    "Method": "RetornaVendaPorId",
+    "RelativePath": "Venda/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TesteDevCenterSys.Controllers.VendaController",
+    "Method": "AtualizaVenda",
+    "RelativePath": "Venda/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "vendaDto",
+        "Type": "TesteDevCenterSys.Data.Dtos.UpdateVendaDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TesteDevCenterSys.Controllers.VendaController",
+    "Method": "AtualizaVendaParcial",
+    "RelativePath": "Venda/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "vendaPatch",
+        "Type": "Microsoft.AspNetCore.JsonPatch.Operations.Operation[]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TesteDevCenterSys.Controllers.VendaController",
+    "Method": "DeletaVenda",
+    "RelativePath": "Venda/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "TesteDevCenterSys.Controllers.VendedorController",
-    "Method": "AdicionaVendedor",
+    "Method": "CadastraVendedor",
     "RelativePath": "Vendedor",
     "HttpMethod": "POST",
     "IsController": true,

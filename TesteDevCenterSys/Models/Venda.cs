@@ -13,14 +13,13 @@ namespace TesteDevCenterSys.Models
         public DateTime DataVenda { get; set; }
 
         [Required]
-        [ForeignKey("Vendedor")]
         public int VendedorId { get; set; }
         public virtual Vendedor Vendedor { get; set; }
 
-        public virtual ICollection<VendaProduto> VendaProdutos { get; set; } = new List<VendaProduto>();
+        public virtual ICollection<VendaProduto> VendaProdutos { get; set; }
 
         [NotMapped]
-        public double TotalVenda => VendaProdutos.Sum(v => v.ValorTotal);
+        public double TotalVenda => VendaProdutos.Sum(v => (v.Produto.Preco * v.Quantidade));
         [NotMapped]
         public double ComissaoVendedor => TotalVenda * Vendedor.PercentualComissao / 100;
     }

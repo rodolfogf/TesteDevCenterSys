@@ -17,4 +17,6 @@ public class Vendedor
     public double PercentualComissao { get; set; }
     public double ValorComissoes { get; set; }
 
+    public virtual ICollection<Venda> Vendas { get; set; }
+
 }

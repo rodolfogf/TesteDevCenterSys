@@ -8,7 +8,9 @@ namespace TesteDevCenterSys.Profiles
     {
         public VendaProfile() 
         {
-            CreateMap<CreateVendaDto, Venda>();
+            CreateMap<CreateVendaDto, Venda>()
+                .ForMember(dest => dest.Vendedor, opt => opt.Ignore())
+                .ForMember(dest => dest.VendaProdutos, opt => opt.Ignore());
             CreateMap<UpdateVendaDto, Venda>();
             CreateMap<Venda, ReadVendaDto>();
             CreateMap<ReadVendaDto, Venda>();
