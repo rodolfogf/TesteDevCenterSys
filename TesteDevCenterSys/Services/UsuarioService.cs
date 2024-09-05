@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
+using System.Globalization;
+using System.Text;
 using TesteDevCenterSys.Data.Dtos;
 using TesteDevCenterSys.Models;
 
@@ -28,21 +30,22 @@ public class UsuarioService
 
         if (!resultado.Succeeded)
         {
-            throw new ApplicationException("Falha ao cadastrar usuário!");
+            var erros = string.Join(", ", resultado.Errors.Select(e => e.Description));
+            throw new ApplicationException($"Falha ao cadastrar usuário! Motivos: {erros}");
         }
 
     }
 
     public async Task<string> Login(LoginUsuarioDto dto)
     {
-        var resultado = await _signInManager.PasswordSignInAsync(dto.Username, dto.Password, false, false);
+        var resultado = await _signInManager.PasswordSignInAsync(dto.Email, dto.Password, false, false);
 
         if (!resultado.Succeeded)
         {
             throw new ApplicationException("Usuário não autenticado!");
         }
 
-        var usuario = _signInManager.UserManager.Users.FirstOrDefault(user => user.NormalizedUserName == dto.Username.ToUpper());
+        var usuario = _signInManager.UserManager.Users.FirstOrDefault(user => user.NormalizedUserName == dto.Email.ToUpper());
 
         _tokenService.GenerateToken(usuario);
 
