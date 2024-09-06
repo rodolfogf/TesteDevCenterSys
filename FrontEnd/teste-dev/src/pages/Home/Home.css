@@ -1,0 +1,13 @@
+.container-home {
+    display: flex;
+    background-color: #171D1F;
+    padding: 2.5em 8em;
+    border-radius: 32px;
+    gap: 3em;
+}
+
+.container-home form {
+    margin: 0 6.5px;
+    font-size: 18px;
+    font-weight: 400;
+}

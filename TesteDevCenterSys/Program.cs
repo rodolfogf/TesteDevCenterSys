@@ -43,6 +43,15 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<TokenService>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy",
+        policyBuilder => policyBuilder
+            .AllowAnyOrigin() // Permite todas as origens (Cuidado em produção)
+            .AllowAnyMethod() // Permite todos os métodos (GET, POST, PUT, DELETE, etc.)
+            .AllowAnyHeader()); // Permite todos os cabeçalhos
+});
+
 builder.Services.AddControllers().AddNewtonsoftJson();
 
 builder.Services.AddControllers();

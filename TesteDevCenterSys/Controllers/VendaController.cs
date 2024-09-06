@@ -62,6 +62,12 @@ namespace TesteDevCenterSys.Controllers
             return _mapper.Map<List<ReadVendaDto>>(_context.Vendas.ToList().Skip(skip).Take(take));
         }
 
+        [HttpGet("/Comissao")]
+        public IEnumerable<ReadVendaComissaoDto> RetornaComissoes([FromQuery] int skip = 0, [FromQuery] int take = 10)
+        {
+            return _mapper.Map<List<ReadVendaComissaoDto>>(_context.Vendas.ToList().Skip(skip).Take(take));
+        }
+
         [HttpGet("{id}")]
         public IActionResult RetornaVendaPorId(int id)
         {

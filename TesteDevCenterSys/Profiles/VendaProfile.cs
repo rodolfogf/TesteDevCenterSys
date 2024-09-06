@@ -13,6 +13,12 @@ namespace TesteDevCenterSys.Profiles
                 .ForMember(dest => dest.VendaProdutos, opt => opt.Ignore());
             CreateMap<UpdateVendaDto, Venda>();
             CreateMap<Venda, ReadVendaDto>();
+            CreateMap<Venda, ReadVendaComissaoDto>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.DataVenda, opt => opt.MapFrom(src => src.DataVenda.ToString("dd/MM/yyyy")))
+                .ForMember(dest => dest.TotalVenda, opt => opt.MapFrom(src => src.TotalVenda))
+                .ForMember(dest => dest.NomeVendedor, opt => opt.MapFrom(src => src.Vendedor.Nome))
+                .ForMember(dest => dest.ComissaoVendedor, opt => opt.MapFrom(src => src.ComissaoVendedor));
             CreateMap<ReadVendaDto, Venda>();
         }
     }

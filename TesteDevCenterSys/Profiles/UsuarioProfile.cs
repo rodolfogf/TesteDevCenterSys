@@ -9,7 +9,8 @@ namespace TesteDevCenterSys.Profiles
         public UsuarioProfile()
         {
             CreateMap<CreateUsuarioDto, Usuario>();
-            CreateMap<Usuario, ReadUsuarioDto>();
+            CreateMap<Usuario, ReadUsuarioDto>()
+                .ForMember(dest => dest.DataNascimento, opt => opt.MapFrom(src => src.DataNascimento.ToString("dd/MM/yyyy")));
         }
     }
 }
