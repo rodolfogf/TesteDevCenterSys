@@ -1,7 +1,11 @@
 
 import './Home.css'
-import { useState } from 'react';
-import {Button, Stack} from '@mui/material'; 
+import {Button, Stack} from '@mui/material';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import RecentActorsIcon from '@mui/icons-material/RecentActors';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import ReceiptIcon from '@mui/icons-material/Receipt';
 
 export default function Home(){
     
@@ -13,23 +17,33 @@ export default function Home(){
                 direction="column"
                 >
                 <Button href="/usuario-lista" 
-                    variant="contained">
+                    variant="contained"                    
+                    startIcon={<AccountCircleIcon />}
+                >
                         Usuários
                 </Button>
                 <Button href="/vendedor-lista"
-                    variant="contained">
+                    variant="contained"                    
+                    startIcon={<RecentActorsIcon />}
+                >
                         Vendedores
                 </Button>                    
                 <Button href="/produto-lista"
-                    variant="contained">
+                    variant="contained"                    
+                    startIcon={<AddShoppingCartIcon />}
+                >
                         Produtos
                 </Button>
                 <Button href="/venda"
-                    variant="contained">
+                    variant="contained"                    
+                    startIcon={<MonetizationOnIcon />}
+                >
                         Venda
                 </Button> 
                 <Button href="/venda-lista"
-                    variant="contained">
+                    variant="contained"                    
+                    startIcon={<ReceiptIcon />}
+                >
                         Comissões
                 </Button>                   
             </Stack>

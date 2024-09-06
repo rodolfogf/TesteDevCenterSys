@@ -7,13 +7,13 @@ import Subtitulo from "../../components/custom/Subtitulo";
 import Navegacao from "../../components/custom/Navegacao";
 
 const ProdutoCreate = () => {
-    const [produto, setProduto] = useState('');
+    const [nome, setNome] = useState('');
     const [descricao, setDescricao] = useState('');
     const [preco, setPreco] = useState('');
     
     const handleSubmit = (event) =>{
         event.preventDefault();
-        console.log('produto' + produto);
+        console.log('nome' + nome);
         console.log('descricao' + descricao); 
         console.log('preco' + preco); 
     }
@@ -32,17 +32,20 @@ const ProdutoCreate = () => {
                         alignItems="right"
                         direction="column"
                     >
-                        <CustomTextField label='Nome do produto'
-                            value={produto}
-                            setValue={setProduto}
+                        <CustomTextField 
+                            label='Nome'
+                            value={nome}
+                            onChange={(e) => setNome(e.target.value)}
                         />
-                        <CustomTextField label='Descrição'
+                        <CustomTextField
+                            label='Descrição'
                             value={descricao}
-                            setValue={setDescricao}
+                            onChange={(e) => setNome(e.target.value)}
                         />                    
-                        <CustomTextField label='Preço'
+                        <CustomTextField
+                            label='Preço'
                             value={preco}
-                            setValue={setPreco}
+                            onChange={(e) => setPreco(e.target.value)}
                         />                   
                         <Button variant="contained">Cadastrar</Button>
                         <Navegacao

@@ -39,7 +39,7 @@ namespace TesteDevCenterSys.Controllers
         [HttpGet]
         public IEnumerable<ReadUsuarioDto> RetornaUsuarios()
         {
-            var usuarios = _mapper.Map<List<ReadUsuarioDto>>(_context.Users);
+            var usuarios = _mapper.Map<List<ReadUsuarioDto>>(_context.Users.ToList());
 
             return usuarios;
         }

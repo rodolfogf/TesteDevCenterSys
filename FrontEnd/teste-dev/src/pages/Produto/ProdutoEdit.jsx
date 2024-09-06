@@ -6,19 +6,18 @@ import CustomTextField from "../../components/custom/CustomTextField";
 import Subtitulo from "../../components/custom/Subtitulo";
 import Navegacao from "../../components/custom/Navegacao";
 
+
 const ProdutoEdit = (id) => {
 
-    const [produto, setProduto] = useState('');
+    const [nome, setNome] = useState('');
     const [descricao, setDescricao] = useState('');
-    const [preco, setPreco] = useState('');
-    
+    const [preco, setPreco] = useState('');    
 
-    const currentId = 1;
     const [data, setData] = useState({});
 
     const handleSubmit = (event) =>{
         event.preventDefault();
-        console.log('produto' + produto);
+        console.log('nome' + nome);
         console.log('descricao' + descricao); 
         console.log('preco' + preco); 
     }
@@ -26,8 +25,8 @@ const ProdutoEdit = (id) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await ApiService.getById('/produto', currentId);
-                console.log('Dados:', data);
+                const response = await ApiService.getById('/produto', id);
+                console.log('response:', response);
                 
                 if (!!response) setData(response);
             } catch (error) {
@@ -54,29 +53,26 @@ const ProdutoEdit = (id) => {
                         alignItems="right"
                         direction="column"
                     >
-                        <CustomTextField label='Nome do produto'
-                            value={produto}
-                            setValue={setProduto}
+                        <CustomTextField 
+                            label='Nome do produto'
+                            value={nome}
+                            onChange={(e) => setNome(e.target.value)}
                         />
-                        <CustomTextField label='Descrição'
+                        <CustomTextField
+                            label='Descrição'
                             value={descricao}
-                            setValue={setDescricao}
+                            onChange={(e) => setDescricao(e.target.value)}
                         />                    
-                        <CustomTextField label='Preço'
+                        <CustomTextField
+                            label='Preço'
                             value={preco}
-                            setValue={setPreco}
+                            onChange={(e) => setPreco(e.target.value)}
                         />
-                        <Stack
-                            spacing={4}
-                            alignItems="center"
-                            direction="row"
-                        >
                             <Button variant="contained" href='/produto-lista'>Cancelar</Button>                    
                             <Button variant="contained">Confirmar</Button>
                             <Navegacao
                                 rotaVoltar='/produto-lista'
                             />
-                        </Stack>                   
                     </Stack>
                 </form>                           
             </section>

@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-// Configurando a base URL para as requisições
+
 const api = axios.create({
-  baseURL: 'https://localhost:7158', // Troque pela sua URL base
+  baseURL: 'https://localhost:7158',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -28,7 +28,6 @@ const ApiService = {
     }
   },
 
-  // Método POST: Para criar novos dados
   post: async (url, data) => {
     try {
       const response = await api.post(url, data);
@@ -39,8 +38,7 @@ const ApiService = {
     }
   },
 
-  // Método PUT: Para substituir dados existentes
-  put: async (url, data) => {
+ put: async (url, data) => {
     try {
       const response = await api.put(url, data);
       return response.data;
@@ -50,8 +48,7 @@ const ApiService = {
     }
   },
 
-  // Método PATCH: Para atualizar parcialmente os dados
-  patch: async (url, data) => {
+patch: async (url, data) => {
     try {
       const response = await api.patch(url, data);
       return response.data;
@@ -61,8 +58,7 @@ const ApiService = {
     }
   },
 
-  // Método DELETE: Para excluir dados
-  delete: async (url) => {
+delete: async (url) => {
     try {
       const response = await api.delete(url);
       return response.data;
