@@ -23,7 +23,7 @@ const VendaList = () => {
         { field: 'nomeVendedor', headerName: 'Vendedor', width: 180 },
         {
             field: 'comissaoVendedor',
-            headerName: 'Comissao do Vendedor',
+            headerName: 'Comissão do Vendedor',
             type: 'number',
             width: 180,
             valueFormatter: (value) => {
@@ -36,12 +36,7 @@ const VendaList = () => {
         }
     ];
 
-    const mock = [
-        { id: 1, "dataVenda": "03/09/2024", "totalVenda": 39.0, "nomeVendedor": "Leo", "comissaoVendedor": 1.95 },
-        { id: 2, "dataVenda": "03/09/2024", "totalVenda": 21.0, "nomeVendedor": "Ju", "comissaoVendedor": 1.05 }
-    ];
-
-    const [data, setData] = useState({});
+    const [comissoes, setComissoes] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -49,7 +44,7 @@ const VendaList = () => {
                 const response = await ApiService.get('/comissao');
                 console.log('response:', response);
 
-                if (!!response) setData(response);
+                if (!!response) setComissoes(response);
             } catch (error) {
                 console.error('Erro ao buscar dados', error);
             }
@@ -63,8 +58,10 @@ const VendaList = () => {
         <List
             texto="Comissões"
             adicionarBtDesabilitado={true}
+            editarDesabilitado={true}
+            deletarDesabilitado={true}
             columns={columns}
-            rows={mock}
+            rows={comissoes}
             rotaVoltar="/"
         >
         </List>

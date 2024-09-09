@@ -64,6 +64,8 @@ const VendedorList = () => {
             rota="/vendedor-criar"
             rotaVoltar="/"
             adicionarBtDesabilitado={false}
+            editarDesabilitado={false}
+            deletarDesabilitado={false}
             columns={columns}
             rows={data}
         >

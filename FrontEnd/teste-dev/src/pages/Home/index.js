@@ -3,7 +3,7 @@ import './Home.css'
 import {Button, Stack} from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import RecentActorsIcon from '@mui/icons-material/RecentActors';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import InventoryIcon from '@mui/icons-material/Inventory';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 
@@ -30,7 +30,7 @@ export default function Home(){
                 </Button>                    
                 <Button href="/produto-lista"
                     variant="contained"                    
-                    startIcon={<AddShoppingCartIcon />}
+                    startIcon={<InventoryIcon />}
                 >
                         Produtos
                 </Button>

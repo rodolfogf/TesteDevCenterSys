@@ -54,6 +54,8 @@ const ProdutoList = () => {
             rota="/produto-criar"
             rotaVoltar = "/"
             adicionarBtDesabilitado={false}
+            editarDesabilitado={false}
+            deletarDesabilitado={false}
             columns={columns}
             rows={data}
         >

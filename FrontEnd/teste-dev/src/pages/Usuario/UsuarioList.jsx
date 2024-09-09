@@ -48,6 +48,8 @@ const UsuarioList = () => {
             rota="/usuario-criar"
             rotaVoltar="/"                
             adicionarBtDesabilitado={false}
+            editarDesabilitado={false}
+            deletarDesabilitado={false}
             columns={columns}
             rows={data}
         >

@@ -30,8 +30,9 @@ const ApiService = {
 
   post: async (url, data) => {
     try {
+      console.log(data)
       const response = await api.post(url, data);
-      return response.data;
+      return response;
     } catch (error) {
       console.error('Erro no POST', error);
       throw error;

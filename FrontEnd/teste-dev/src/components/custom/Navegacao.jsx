@@ -7,7 +7,7 @@ const Navegacao = (props) => {
         <Box sx={{ p: 5 }}>
             <Stack
                 spacing={1}
-                alignItems="right"
+                alignItems="left"
                 direction="row"
             >
                 <Button

@@ -1,32 +1,64 @@
-import { Button, Stack, TextField } from "@mui/material";
+import { Alert, Box, Button, Snackbar, Stack, TextField } from "@mui/material";
 import './Venda.css'
 import React, { useEffect } from "react";
 import { useState } from "react";
 import CustomTextField from "../../components/custom/CustomTextField";
 import Subtitulo from "../../components/custom/Subtitulo";
 import CustomAutoComplete from "../../components/custom/CustomAutoComplete";
-import Navegacao from "../../components/custom/Navegacao";
 import ApiService from "../../services/ApiService";
+import { NumericFormat } from 'react-number-format';
+import List from "../../components/list/List";
+import Navegacao from "../../components/custom/Navegacao";
+import useSnackbarWithApi from "../../hooks/useSnackbarComApi";
 
 const VendaCreate = () => {
 
-    const mockVendedores = [
-        { nome: "Leo", percentual: 5, valorComissoes: 1000.0 },
-        { nome: "Ju", percentual: 5, valorComissoes: 2000.0 }
-    ];
-
-    const mockProdutos = [
-        { nome: "Eisenbahn Pilsen", descricao: "Cerveja Lata 355 ml", preco: 1.0 },
-        { nome: "Arroz Codil", descricao: "Arroz Tipo 1 5Kg", preco: 19.0 }
-    ];
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-    }
+    const columns = [
+        { field: 'nome', headerName: 'Nome', width: 200 },
+        { field: 'descricao', headerName: 'Descrição', width: 250},
+        {
+            field: 'preco',
+            headerName: 'Preço unidade',
+            type: 'number',
+            width: 110, 
+            valueFormatter: (value) => {
+                const valor = Number(value);
+                if (isNaN(valor)) {
+                    return 'R$ 0,00';
+                }                
+                return `R$ ${value.toFixed(2).replace('.', ',')}`;
+            }
+        },
+        { 
+            field: 'quantidade', 
+            headerName: 'Quantidade',
+            type: 'number', 
+            width: 100},
+        {
+            field: 'total',
+            headerName: 'Total',
+            type: 'number',
+            width: 100, 
+            valueFormatter: (value) => {
+                const valor = Number(value);
+                if (isNaN(valor)) {
+                    return 'R$ 0,00';
+                }                
+                return `R$ ${value.toFixed(2).replace('.', ',')}`;
+            }
+        }        
+    ]
 
     const [vendedor, setVendedor] = useState(null);
+    const [vendedorId, setVendedorId] = useState('');
     const [produto, setProduto] = useState(null);
     const [quantidade, setQuantidade] = useState('');
+    const [totalItem, setTotalItem] = useState(0);
+    const [vendaProdutos, setVendaProdutos] = useState([]);
+    const [vendaProdutosSubmit, setVendaProdutosSubmit] = useState([]);
+    const [vendaSubmit, setVendaSubmit] = useState([]);
+
+    const [id, setId] = useState(1);
 
     const [dataVendedor, setDataVendedor] = useState([]);
     const [dataProduto, setDataProduto] = useState([]);
@@ -47,21 +79,111 @@ const VendaCreate = () => {
 
     }, []);
 
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await ApiService.get('/produto');
                 console.log('response:', response);
-
+                
                 if (!!response) setDataProduto(response);
             } catch (error) {
                 console.error('Erro ao buscar dados', error);
             }
         };
-
+        
         fetchData();
-
+        
     }, []);
+
+    useEffect(() => {
+        const calcularTotal = () => {
+            if (produto && quantidade) {
+                const totalCalculado = produto.preco * parseFloat(quantidade);
+                setTotalItem(totalCalculado);
+            }
+        };
+    
+        calcularTotal();
+    }, [produto, quantidade]);
+
+    useEffect(() => {
+        console.log(vendedor);
+
+        if(vendedor) setVendedorId(vendedor.id);        
+
+    }, [vendedor]);
+
+    console.log("vendedorId", vendedorId);
+
+    useEffect(() => {
+        let novoVendaProdutosSubmit = vendaProdutos.map(item => ({
+            produtoId: item.produtoId,
+            quantidade: item.quantidade
+        }))
+
+        setVendaProdutosSubmit(novoVendaProdutosSubmit);
+
+    }, [vendaProdutos])
+
+    useEffect(() => {
+
+        let dataVenda = new Date();
+        let novaVenda = {
+            "dataVenda": dataVenda.toLocaleDateString(),
+            "vendedorId": vendedorId,
+            "vendaProdutos": vendaProdutosSubmit
+        };
+
+        setVendaSubmit(novaVenda);
+
+    }, [vendaProdutosSubmit, vendedorId])
+
+
+    
+    const handleAddItem = () => {
+        if (produto && quantidade > 0) {
+            var novoId = id + 1;
+            setId(novoId);
+
+            let nomeProduto = produto.nome;
+            let idProduto = produto.id;
+            let descricaoProduto = produto.descricao;
+            let precoProduto = produto.preco;
+            let quantidadeItem = quantidade;
+            let totalItemProduto = totalItem
+            
+            let novoItemVenda = {
+                id: id,
+                produtoId: idProduto,
+                nome: nomeProduto,
+                descricao: descricaoProduto,
+                preco: precoProduto,
+                quantidade: quantidadeItem,
+                total: totalItemProduto
+            };
+            setVendaProdutos([...vendaProdutos, novoItemVenda]);
+            setProduto(null);
+            setQuantidade('');
+            setTotalItem(0);
+        } else {
+            alert('Selecione um produto e insira a quantidade!');
+        }
+    };
+
+    const handleDeleteItem = (id) => {
+        const novoVendaProdutos = vendaProdutos.filter((item) => item.id !== id);
+        setVendaProdutos(novoVendaProdutos);
+    };
+
+    const { openSnackbar, snackbarMessage, snackbarSeverity, handleApiCall, handleCloseSnackbar } = 
+        useSnackbarWithApi("Venda finalizada com sucesso!", "Erro ao finalizar a venda");
+
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        await handleApiCall('/venda', vendaSubmit);        
+    };
 
     return (
         <div className='container-venda'>
@@ -101,12 +223,60 @@ const VendaCreate = () => {
                             value={quantidade}
                             onChange={(e) => setQuantidade(e.target.value)}
                         />
-                        <Button variant="contained">Cadastrar</Button>
-                        <Navegacao
-                            rotaVoltar='/'
+                        <NumericFormat
+                            disabled
+                            customInput={CustomTextField}
+                            thousandSeparator="."
+                            decimalScale={2}
+                            fixedDecimalScale={true}
+                            prefix="R$ "
+                            decimalSeparator=","
+                            label="Valor Total"
+                            value={totalItem}
+                            onChange={(e) => setQuantidade(e.target.value)}
                         />
+                        <Button variant="contained" onClick={handleAddItem}>Adicionar Item</Button>
                     </Stack>
                 </form>
+            </section>
+            <section>
+            <List
+                texto="Itens da Venda"
+                rotaVoltar = "/"
+                adicionarBtDesabilitado={true}
+                editarDesabilitado={true}
+                deletarDesabilitado={false}
+                ocultarNavegacao={true}
+                columns={columns}
+                rows={vendaProdutos}
+                onDelete={handleDeleteItem}
+            >
+            </List>
+            <Box sx={{ p: 6 }}>
+                <Stack
+                    spacing={1}
+                    alignItems="center"
+                    direction="column"
+                >
+                    <Button 
+                        variant="contained"
+                        onClick={handleSubmit}
+                    >
+                        Finalizar Venda
+                    </Button>
+                    <Navegacao/> 
+                </Stack>
+            </Box>
+            {<Snackbar
+                    open={openSnackbar}
+                    autoHideDuration={6000}
+                    onClose={handleCloseSnackbar}
+                    anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+                >
+                    <Alert onClose={handleCloseSnackbar} severity={snackbarSeverity} sx={{ width: '100%' }}>
+                        {snackbarMessage}
+                    </Alert>
+                </Snackbar>}
             </section>
         </div>
     )
