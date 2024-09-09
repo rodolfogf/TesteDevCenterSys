@@ -1,10 +1,11 @@
-import { Button, Stack } from "@mui/material";
+import { Alert, Button, Snackbar, Stack  } from "@mui/material";
 import './Usuario.css'
 import React from "react";
 import { useState } from "react";
 import CustomTextField from "../../components/custom/CustomTextField";
 import Subtitulo from "../../components/custom/Subtitulo";
 import Navegacao from "../../components/custom/Navegacao";
+import useSnackbarWithApiPost from "../../hooks/useSnackbarComApiPost";
 
 const UsuarioCreate = () => {
     const [nome, setNome] = useState('');
@@ -14,10 +15,29 @@ const UsuarioCreate = () => {
     const [senha, setSenha] = useState('');
     const [confirmaSenha, setConfirmaSenha] = useState('');
     
-    const handleSubmit = (event) =>{
+    const { openSnackbar, snackbarMessage, snackbarSeverity, handleApiCall, handleCloseSnackbar } =
+        useSnackbarWithApiPost("Usuário cadastrado com sucesso!", "Erro ao cadastrar o usuário");
+
+    const novoUsuario = {
+        "nome": nome,
+        "email": email,
+        "cpf": cpf,
+        "dataNascimento": dataNascimento,
+        "password": senha,
+        "repassword": confirmaSenha
+    };
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log('nome' + nome); 
-    }
+        await handleApiCall('/usuario/cadastro', novoUsuario);
+        setNome('');
+        setEmail('');
+        setCpf('');
+        setDataNascimento('');
+        setSenha('');
+        setConfirmaSenha('');        
+    };
+    
     return (
         <div className='container-usuario'>
             <section>
@@ -54,28 +74,33 @@ const UsuarioCreate = () => {
                             onChange={(e) => setCpf(e.target.value)}
                         />
                         <CustomTextField 
-                            label='Senha'
+                            label='Digite a senha'
                             type='password'
                             value={senha}
                             onChange={(e) => setSenha(e.target.value)}
                         />
                         <CustomTextField 
-                            label='Digite a senha'
+                            label='Confirme a senha'
                             type='password'
                             value={confirmaSenha}
                             onChange={(e) => setConfirmaSenha(e.target.value)}
-                        />
-                        <CustomTextField 
-                            label='Confirme a senha'
-                            value={confirmaSenha}
-                            setValue={setConfirmaSenha}
                         />                
-                        <Button variant="contained">Cadastrar</Button>
+                        <Button  type="submit" variant="contained">Cadastrar</Button>
                         <Navegacao
                             rotaVoltar='/usuario-lista'
                         />                    
                     </Stack>
-                </form>                           
+                </form>
+                <Snackbar
+                    open={openSnackbar}
+                    autoHideDuration={6000}
+                    onClose={handleCloseSnackbar}
+                    anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+                >
+                    <Alert onClose={handleCloseSnackbar} severity={snackbarSeverity} sx={{ width: '100%' }}>
+                        {snackbarMessage}
+                    </Alert>
+                </Snackbar>                           
             </section>
         </div>
     )

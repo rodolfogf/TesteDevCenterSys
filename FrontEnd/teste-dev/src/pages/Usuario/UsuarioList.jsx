@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import List from "../../components/list/List";
 import './Usuario.css'
 import ApiService from "../../services/ApiService";
+import { useNavigate } from 'react-router-dom';
+import { Button } from "@mui/material";
+import HomeIcon from '@mui/icons-material/Home';
 
 const UsuarioList = () => {    
 
@@ -19,12 +22,7 @@ const UsuarioList = () => {
         }
     ];
       
-    const mock = [
-        { id: 1, nome: "Leo", email: "leo@email.com", dataNascimento: "01/01/2000 00:00:00" },
-        { id: 2, nome: "Ju", email: "ju@email.com", dataNascimento: "01/01/2000 00:00:00" }
-    ];
-
-    const [data, setData] = useState({});
+    const [usuarios, setUsuarios] = useState({});
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,7 +30,7 @@ const UsuarioList = () => {
                 const response = await ApiService.get('/usuario');
                 console.log('response:', response);
                 
-                if (!!response) setData(response);
+                if (!!response) setUsuarios(response);
             } catch (error) {
                 console.error('Erro ao buscar dados', error);
             }
@@ -41,6 +39,25 @@ const UsuarioList = () => {
         fetchData();
 
     }, []);
+
+    const navigate = useNavigate();
+
+    const handleEditItem = (id) => {
+        navigate(`/usuario-editar/${id}`);
+    };
+
+    const handleDeleteItem = async (id) => {
+        try {            
+            const response = await ApiService.delete('/usuario', id);
+            console.log("response", response);
+    
+            const novosUsuarios = usuarios.filter((usuario) => usuario.id !== id);
+            setUsuarios(novosUsuarios);
+    
+        } catch (error) {
+            console.error("Erro ao excluir o usuário", error);
+        }
+    };
 
     return (
         <List
@@ -51,8 +68,11 @@ const UsuarioList = () => {
             editarDesabilitado={false}
             deletarDesabilitado={false}
             columns={columns}
-            rows={data}
+            rows={usuarios}
+            onEdit={handleEditItem}
+            onDelete={handleDeleteItem}
         >
+        <Button startIcon={<HomeIcon />}/>    
         </List>
     );
 };

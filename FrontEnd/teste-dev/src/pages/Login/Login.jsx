@@ -1,20 +1,47 @@
-import { Button, Stack, Typography } from "@mui/material";
+import { Alert, Button, Snackbar, Stack } from "@mui/material";
 import './Login.css'
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import CustomTextField from "../../components/custom/CustomTextField";
 import Titulo from "../../components/custom/Titulo";
 import Subtitulo from "../../components/custom/Subtitulo";
 import homeImage from '../../img/home.png'
+import useSnackbarWithApiPost from "../../hooks/useSnackbarComApiPost";
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+    
+    const [login, setLogin] = useState('');
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
-    
-    const handleSubmit = (event) =>{
-        event.preventDefault();
 
-    }
+    const { openSnackbar, snackbarMessage, snackbarSeverity, snackBarResponse, handleApiCall, handleCloseSnackbar } =
+        useSnackbarWithApiPost("Login realizado com sucesso!", "Erro ao realizar login. Tente novamnete");
+    
+    useEffect(() => {
+        const novologin = {
+            email : email, 
+            password : senha
+        }
+
+        setLogin(novologin);
+    }, [email, senha]);
+
+    const navigate = useNavigate();
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        await handleApiCall('/usuario/login', login);
+        console.log("snackBarResponse", snackBarResponse);
+        if (snackBarResponse.status === 200){
+            const token = snackBarResponse.data;
+            localStorage.setItem('token', token)
+            navigate('/')
+        }
+        setSenha('');        
+    };
+    
+    
     return (
         <div className='container-login'>
             <img src={homeImage} alt='centersys'/>
@@ -42,9 +69,19 @@ const Login = () => {
                             value={senha}
                             onChange={(e) => setSenha(e.target.value)}
                         />               
-                    <Button variant="contained">Login</Button>
+                    <Button type="submit" variant="contained">Login</Button>
                     </Stack>
-                </form>                           
+                </form>
+                <Snackbar
+                    open={openSnackbar}
+                    autoHideDuration={6000}
+                    onClose={handleCloseSnackbar}
+                    anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+                >
+                    <Alert onClose={handleCloseSnackbar} severity={snackbarSeverity} sx={{ width: '100%' }}>
+                        {snackbarMessage}
+                    </Alert>
+                </Snackbar>                           
             </section>
         </div>
     )

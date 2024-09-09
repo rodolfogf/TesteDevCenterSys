@@ -5,9 +5,11 @@ using TesteDevCenterSys.Data.Dtos;
 using TesteDevCenterSys.Data;
 using TesteDevCenterSys.Models;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TesteDevCenterSys.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class VendaController : ControllerBase

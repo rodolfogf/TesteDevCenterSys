@@ -199,6 +199,43 @@
   },
   {
     "ContainingType": "TesteDevCenterSys.Controllers.UsuarioController",
+    "Method": "RetornaUsuarioPorId",
+    "RelativePath": "Usuario/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TesteDevCenterSys.Controllers.UsuarioController",
+    "Method": "AlteraUsuario",
+    "RelativePath": "Usuario/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "usuarioDto",
+        "Type": "TesteDevCenterSys.Data.Dtos.UpdateUsuarioDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TesteDevCenterSys.Controllers.UsuarioController",
     "Method": "AlteraUsuarioParcial",
     "RelativePath": "Usuario/{id}",
     "HttpMethod": "PATCH",

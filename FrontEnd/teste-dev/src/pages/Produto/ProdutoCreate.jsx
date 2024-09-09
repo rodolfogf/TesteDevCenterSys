@@ -6,7 +6,7 @@ import CustomTextField from "../../components/custom/CustomTextField";
 import Subtitulo from "../../components/custom/Subtitulo";
 import Navegacao from "../../components/custom/Navegacao";
 import { NumericFormat } from 'react-number-format';
-import useSnackbarWithApi from "../../hooks/useSnackbarComApi";
+import useSnackbarWithApiPost from "../../hooks/useSnackbarComApiPost";
 
 const ProdutoCreate = () => {
     const [nome, setNome] = useState('');
@@ -14,7 +14,7 @@ const ProdutoCreate = () => {
     const [preco, setPreco] = useState('');
 
     const { openSnackbar, snackbarMessage, snackbarSeverity, handleApiCall, handleCloseSnackbar } =
-        useSnackbarWithApi("Produto cadastrado com sucesso!", "Erro ao cadastrar o produto");
+        useSnackbarWithApiPost("Produto cadastrado com sucesso!", "Erro ao cadastrar o produto");
 
     const novoProduto = {
         "nome": nome,
@@ -62,7 +62,8 @@ const ProdutoCreate = () => {
                             fixedDecimalScale={true}
                             prefix="R$ "
                             decimalSeparator=","
-                            label="Preço"value={preco}
+                            label="Preço"
+                            value={preco}
                             onValueChange={(values) => setPreco(values.value)}
                         />
                         <Button type="submit" variant="contained">Cadastrar</Button>

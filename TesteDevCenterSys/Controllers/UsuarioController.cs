@@ -44,6 +44,27 @@ namespace TesteDevCenterSys.Controllers
             return usuarios;
         }
 
+        [HttpGet("{id}")]
+        public IActionResult RetornaUsuarioPorId(string id)
+        {
+            var usuario = _context.Users.FirstOrDefault(u => u.Id == id);
+            if (usuario == null) return NotFound();
+            var usuarioDto = _mapper.Map<ReadUsuarioDto>(usuario);
+
+            return Ok(usuario);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult AlteraUsuario(string id, [FromBody] UpdateUsuarioDto usuarioDto)
+        {
+            var usuario = _context.Users.FirstOrDefault(u => u.Id == id);
+            if (usuario == null) return NotFound();
+            _mapper.Map(usuarioDto, usuario);
+            _context.SaveChanges();
+
+            return NoContent();
+        }
+
         [HttpPatch("{id}")]
         public IActionResult AlteraUsuarioParcial(string id, JsonPatchDocument<UpdateUsuarioDto> usuarioPatch)
         {

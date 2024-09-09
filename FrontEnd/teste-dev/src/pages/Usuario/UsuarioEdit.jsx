@@ -1,13 +1,16 @@
 import React, { useEffect, useState} from "react";
 import ApiService from "../../services/ApiService";
-import { Button, Stack } from "@mui/material";
+import { Alert, Button, Snackbar, Stack } from "@mui/material";
 import './Usuario.css'
 import CustomTextField from "../../components/custom/CustomTextField";
 import Subtitulo from "../../components/custom/Subtitulo";
 import Navegacao from "../../components/custom/Navegacao";
+import useSnackbarWithApiPut from "../../hooks/useSnackbarComApiPut";
+import { useParams } from 'react-router-dom';
 
-const UsuarioEdit = (id) => {
+const UsuarioEdit = () => {
 
+    const { id } = useParams();
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [cpf, setCpf] = useState('');
@@ -15,28 +18,49 @@ const UsuarioEdit = (id) => {
     const [senha, setSenha] = useState('');
     const [confirmaSenha, setConfirmaSenha] = useState('');    
 
-    const currentId = 1;
-    const [data, setData] = useState({});
-
-    const handleSubmit = (event) =>{
-        event.preventDefault();
-    }
+    const [usuario, setUsuario] = useState({});
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await ApiService.getById('/usuario', currentId);
-                console.log('Dados:', data);
-                
-                if (!!response) setData(response);
+                const response = await ApiService.getById('/usuario', id);
+                console.log('response:', response);
+
+                if (response) {
+                    setNome(response.nome);
+                    setEmail(response.email);
+                    setCpf(response.cpf);
+                    setDataNascimento(response.dataNascimento);
+                }
             } catch (error) {
                 console.error('Erro ao buscar dados', error);
             }
         };
 
-        fetchData();        
+        fetchData();
+    }, [id]);
+
+    useEffect(() => {
+        const usuarioAtualizado = {
+            nome: nome, 
+            email: email, 
+            cpf: cpf, 
+            dataNascimento: dataNascimento, 
+            password: senha,
+            repassword: confirmaSenha
+        }
+
+        setUsuario(usuarioAtualizado);
         
-      }, []);
+    }, [nome, email, cpf, dataNascimento, senha, confirmaSenha]);
+
+    const { openSnackbar, snackbarMessage, snackbarSeverity, handleApiCall, handleCloseSnackbar } =
+        useSnackbarWithApiPut("Dados do usuário atualizados com sucesso!", "Erro ao atualizar os dados do usuário");
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        await handleApiCall('/usuario', id,  usuario);
+    };
 
       return (
         <div className='container-usuario'>
@@ -74,35 +98,39 @@ const UsuarioEdit = (id) => {
                             onChange={(e) => setCpf(e.target.value)}
                         />
                         <CustomTextField 
-                            label='Senha'
+                            label='Digite a senha'
                             type='password'
                             value={senha}
                             onChange={(e) => setSenha(e.target.value)}
                         />
                         <CustomTextField 
-                            label='Digite a senha'
+                            label='Confirme a senha'
                             type='password'
                             value={confirmaSenha}
                             onChange={(e) => setConfirmaSenha(e.target.value)}
-                        />
-                        <CustomTextField 
-                            label='Confirme a senha'
-                            value={confirmaSenha}
-                            setValue={setConfirmaSenha}
                         />
                         <Stack
                             spacing={4}
                             alignItems="center"
                             direction="row"
                         >
-                            <Button variant="contained" href="/usuario-lista">Cancelar</Button>                    
-                            <Button variant="contained">Confirmar</Button>
+                            <Button type="submit" variant="contained">Confirmar alterações</Button>
                             <Navegacao
                                 rotaVoltar='/usuario-lista'
                             />
                         </Stack>                   
                     </Stack>
-                </form>                           
+                </form>
+                <Snackbar
+                    open={openSnackbar}
+                    autoHideDuration={6000}
+                    onClose={handleCloseSnackbar}
+                    anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+                >
+                    <Alert onClose={handleCloseSnackbar} severity={snackbarSeverity} sx={{ width: '100%' }}>
+                        {snackbarMessage}
+                    </Alert>
+                </Snackbar>                           
             </section>
         </div>
     )

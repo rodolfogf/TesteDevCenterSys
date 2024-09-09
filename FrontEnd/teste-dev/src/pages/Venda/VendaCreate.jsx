@@ -9,7 +9,7 @@ import ApiService from "../../services/ApiService";
 import { NumericFormat } from 'react-number-format';
 import List from "../../components/list/List";
 import Navegacao from "../../components/custom/Navegacao";
-import useSnackbarWithApi from "../../hooks/useSnackbarComApi";
+import useSnackbarWithApi from "../../hooks/useSnackbarComApiPost";
 
 const VendaCreate = () => {
 
@@ -84,7 +84,6 @@ const VendaCreate = () => {
         const fetchData = async () => {
             try {
                 const response = await ApiService.get('/produto');
-                console.log('response:', response);
                 
                 if (!!response) setDataProduto(response);
             } catch (error) {
@@ -108,13 +107,9 @@ const VendaCreate = () => {
     }, [produto, quantidade]);
 
     useEffect(() => {
-        console.log(vendedor);
-
         if(vendedor) setVendedorId(vendedor.id);        
 
     }, [vendedor]);
-
-    console.log("vendedorId", vendedorId);
 
     useEffect(() => {
         let novoVendaProdutosSubmit = vendaProdutos.map(item => ({
@@ -129,8 +124,16 @@ const VendaCreate = () => {
     useEffect(() => {
 
         let dataVenda = new Date();
+        let dataVendaFormatada = dataVenda.toLocaleString('pt-BR', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false  // para formato de 24 horas
+          });
         let novaVenda = {
-            "dataVenda": dataVenda.toLocaleDateString(),
+            "dataVenda": dataVendaFormatada,
             "vendedorId": vendedorId,
             "vendaProdutos": vendaProdutosSubmit
         };
@@ -171,20 +174,21 @@ const VendaCreate = () => {
         }
     };
 
-    const handleDeleteItem = (id) => {
-        const novoVendaProdutos = vendaProdutos.filter((item) => item.id !== id);
-        setVendaProdutos(novoVendaProdutos);
-    };
-
+    
     const { openSnackbar, snackbarMessage, snackbarSeverity, handleApiCall, handleCloseSnackbar } = 
-        useSnackbarWithApi("Venda finalizada com sucesso!", "Erro ao finalizar a venda");
-
-
+    useSnackbarWithApi("Venda finalizada com sucesso!", "Erro ao finalizar a venda");
+    
+    
     const handleSubmit = async (event) => {
         event.preventDefault();
         await handleApiCall('/venda', vendaSubmit);        
     };
-
+    
+    const handleDeleteItem = (id) => {
+        const novoVendaProdutos = vendaProdutos.filter((item) => item.id !== id);
+        setVendaProdutos(novoVendaProdutos);
+    };
+    
     return (
         <div className='container-venda'>
             <section>

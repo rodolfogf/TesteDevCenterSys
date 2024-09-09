@@ -8,7 +8,7 @@ namespace TesteDevCenterSys.Data.Dtos
     public class CreateUsuarioDto
     {
         [Required]
-        [RegularExpression(@"^[a-zA-Z]+(?: [a-zA-Z]+)*$", ErrorMessage = "Somente letras e espaços entre os nomes")]
+        [RegularExpression(@"^[A-Za-zÀ-ÿ]+( [A-Za-zÀ-ÿ]+)*$", ErrorMessage = "Somente letras e espaços entre os nomes")]
         public string Nome { get; set; }
         [Required]
         [EmailAddress]

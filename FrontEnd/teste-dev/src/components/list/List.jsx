@@ -86,10 +86,11 @@ const List = (props) => {
     if (props.editarDesabilitado === true && props.deletarDesabilitado === false) colunasCombinadas = [...colunasCombinadas,...columnsActionsDeletar]; 
     if (props.editarDesabilitado === false && props.deletarDesabilitado === false) colunasCombinadas = [...colunasCombinadas,...columnsActionsEditarDeletar];
 
-    const handleDelete = (id) => {
-        props.onDelete(id);
-    };
     const handleEdit = (id) => {
+        props.onEdit(id);
+    };
+
+    const handleDelete = (id) => {
         props.onDelete(id);
     };
 

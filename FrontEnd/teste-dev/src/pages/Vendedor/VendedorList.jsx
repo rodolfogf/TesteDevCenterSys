@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import List from "../../components/list/List";
 import './Vendedor.css'
 import ApiService from "../../services/ApiService";
+import { useNavigate } from 'react-router-dom';
 
 const VendedorList = () => {
 
@@ -35,12 +36,7 @@ const VendedorList = () => {
         }
     ];
 
-    const mock = [
-        { id: 1, nome: "Leo", percentualComissao: 5.0, "valorComissoes": 1000.0 },
-        { id: 2, nome: "Ju", percentualComissao: 5.0, "valorComissoes": 2000.0 }
-    ];
-
-    const [data, setData] = useState({});
+    const [vendedores, setVendedores] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -48,7 +44,7 @@ const VendedorList = () => {
                 const response = await ApiService.get('/vendedor');
                 console.log('response:', response);
 
-                if (!!response) setData(response);
+                if (!!response) setVendedores(response);
             } catch (error) {
                 console.error('Erro ao buscar dados', error);
             }
@@ -58,6 +54,26 @@ const VendedorList = () => {
 
     }, []);
 
+    const navigate = useNavigate();
+
+    const handleEditItem = (id) => {
+        navigate(`/vendedor-editar/${id}`);
+    };
+
+    const handleDeleteItem = async (id) => {
+        try {
+            
+            const response = await ApiService.delete('/vendedor', id);
+            console.log("response", response);
+    
+            const novosVendedores = vendedores.filter((vendedor) => vendedor.id !== id);
+            setVendedores(novosVendedores);
+    
+        } catch (error) {
+            console.error("Erro ao excluir o vendedor", error);
+        }
+    };
+
     return (
         <List
             texto="Vendedores cadastrados"
@@ -66,8 +82,10 @@ const VendedorList = () => {
             adicionarBtDesabilitado={false}
             editarDesabilitado={false}
             deletarDesabilitado={false}
+            onEdit={handleEditItem}
+            onDelete={handleDeleteItem}
             columns={columns}
-            rows={data}
+            rows={vendedores}
         >
         </List>
     );

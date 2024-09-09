@@ -4,6 +4,7 @@ import './Produto.css'
 import HomeIcon from '@mui/icons-material/Home';
 import { Button } from "@mui/material";
 import ApiService from "../../services/ApiService";
+import { useNavigate } from 'react-router-dom';
 
 const ProdutoList = () => {    
 
@@ -25,20 +26,15 @@ const ProdutoList = () => {
         },        
     ]
       
-    const mock = [
-        { id: 1, nome: "Eisenbahn Pilsen", descricao: "Cerveja Lata 355 ml", preco: 1.0 },
-        { id: 2, nome: "Arroz Codil", descricao: "Arroz Tipo 1 5Kg", preco: 19.0 }
-    ];
-
-    const [data, setData] = useState({});
-
+    const [produtos, setProdutos] = useState([]);
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await ApiService.get('/produto');
                 console.log('response:', response);
                 
-                if (!!response) setData(response);
+                if (!!response) setProdutos(response);
             } catch (error) {
                 console.error('Erro ao buscar dados', error);
             }
@@ -47,6 +43,26 @@ const ProdutoList = () => {
         fetchData();        
         
     }, []);
+
+    const navigate = useNavigate();
+
+    const handleEditItem = (id) => {
+        navigate(`/produto-editar/${id}`);
+    };
+
+    const handleDeleteItem = async (id) => {
+        try {
+            
+            const response = await ApiService.delete('/produto', id);
+            console.log("response", response);
+    
+            const novosProdutos = produtos.filter((produto) => produto.id !== id);
+            setProdutos(novosProdutos);
+    
+        } catch (error) {
+            console.error("Erro ao deletar o produto", error);
+        }
+    };
 
     return (
         <List
@@ -57,7 +73,9 @@ const ProdutoList = () => {
             editarDesabilitado={false}
             deletarDesabilitado={false}
             columns={columns}
-            rows={data}
+            rows={produtos}
+            onEdit={handleEditItem}
+            onDelete={handleDeleteItem}
         >
         <Button startIcon={<HomeIcon />}/>
         </List>

@@ -12,24 +12,25 @@ import VendedorEdit from './pages/Vendedor/VendedorEdit';
 import VendedorCreate from './pages/Vendedor/VendedorCreate';
 import VendaCreate from './pages/Venda/VendaCreate';
 import VendaList from './pages/Venda/VendaList';
+import ProtectedRoute from './components/route/ProtectedRoute.jsx';
 
 export default function Router(){
     return(
         <BrowserRouter>
             <Routes>
-                <Route path='/' element={<Home/>}/>
                 <Route path='/login' element={<Login />}/>
-                <Route path='/usuario-lista' element={<UsuarioList />}/>
-                <Route path='/usuario-editar' element={<UsuarioEdit />}/>
-                <Route path='/usuario-criar' element={<UsuarioCreate />}/>
-                <Route path='/produto-lista' element={<ProdutoList />}/>
-                <Route path='/produto-editar' element={<ProdutoEdit />}/>
-                <Route path='/produto-criar' element={<ProdutoCreate />}/>
-                <Route path='/vendedor-lista' element={<VendedorList />}/>
-                <Route path='/vendedor-editar' element={<VendedorEdit />}/>
-                <Route path='/vendedor-criar' element={<VendedorCreate />}/>
-                <Route path='/venda' element={<VendaCreate />}/>                
-                <Route path='/venda-lista' element={<VendaList />}/>                
+                <Route path='/' element={<ProtectedRoute><Home/></ProtectedRoute>} />
+                <Route path='/usuario-lista' element={<ProtectedRoute><UsuarioList /></ProtectedRoute>} />
+                <Route path='/usuario-editar/:id' element={<ProtectedRoute><UsuarioEdit /></ProtectedRoute>} />
+                <Route path='/usuario-criar' element={<ProtectedRoute><UsuarioCreate /></ProtectedRoute>} />
+                <Route path='/produto-lista' element={<ProtectedRoute><ProdutoList /></ProtectedRoute>} />
+                <Route path='/produto-editar/:id' element={<ProtectedRoute><ProdutoEdit /></ProtectedRoute>} />
+                <Route path='/produto-criar' element={<ProtectedRoute><ProdutoCreate /></ProtectedRoute>} />
+                <Route path='/vendedor-lista' element={<ProtectedRoute><VendedorList /></ProtectedRoute>} />
+                <Route path='/vendedor-editar/:id' element={<ProtectedRoute><VendedorEdit /></ProtectedRoute>} />
+                <Route path='/vendedor-criar' element={<ProtectedRoute><VendedorCreate /></ProtectedRoute>} />
+                <Route path='/venda' element={<ProtectedRoute><VendaCreate /></ProtectedRoute>} />
+                <Route path='/venda-lista' element={<ProtectedRoute><VendaList /></ProtectedRoute>} />                
             </Routes>
         </BrowserRouter>
     )

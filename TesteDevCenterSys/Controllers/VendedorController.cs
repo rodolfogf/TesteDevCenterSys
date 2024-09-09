@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using TesteDevCenterSys.Data;
@@ -7,6 +8,7 @@ using TesteDevCenterSys.Models;
 
 namespace TesteDevCenterSys.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("[controller]")]
 public class VendedorController : ControllerBase

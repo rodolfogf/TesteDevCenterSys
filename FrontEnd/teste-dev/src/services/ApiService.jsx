@@ -8,6 +8,14 @@ const api = axios.create({
   },
 });
 
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token');
+  if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
 const ApiService = {
   get: async (url, params = {}) => {
     try {
@@ -39,10 +47,10 @@ const ApiService = {
     }
   },
 
- put: async (url, data) => {
+ put: async (url, id, data) => {
     try {
-      const response = await api.put(url, data);
-      return response.data;
+      const response = await api.put(`${url}/${id}`, data);
+      return response;
     } catch (error) {
       console.error('Erro no PUT', error);
       throw error;
@@ -59,9 +67,9 @@ patch: async (url, data) => {
     }
   },
 
-delete: async (url) => {
+delete: async (url, id) => {
     try {
-      const response = await api.delete(url);
+      const response = await api.delete(`${url}/${id}`);
       return response.data;
     } catch (error) {
       console.error('Erro no DELETE', error);

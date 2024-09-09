@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using System.Globalization;
 using System.Text;
@@ -36,6 +37,7 @@ public class UsuarioService
 
     }
 
+    [AllowAnonymous]
     public async Task<string> Login(LoginUsuarioDto dto)
     {
         var resultado = await _signInManager.PasswordSignInAsync(dto.Email, dto.Password, false, false);

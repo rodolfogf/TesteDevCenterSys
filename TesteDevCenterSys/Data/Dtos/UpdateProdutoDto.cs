@@ -13,6 +13,5 @@ public class UpdateProdutoDto
     [DataType(DataType.Currency)]
     [Range(0.01, double.MaxValue)]
     [Required(ErrorMessage = "O valor é obrigatório.")]
-    [RegularExpression(@"^\d+(\.\d{2})?$", ErrorMessage = "O valor deve ser um número com até duas casas decimais.")]
     public double Preco { get; set; }
 }
