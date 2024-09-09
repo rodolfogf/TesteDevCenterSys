@@ -6,8 +6,17 @@ import RecentActorsIcon from '@mui/icons-material/RecentActors';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import ReceiptIcon from '@mui/icons-material/Receipt';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home(){
+
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        navigate('/login');
+    };
     
     return (
         <div className='container-home'>
@@ -45,7 +54,15 @@ export default function Home(){
                     startIcon={<ReceiptIcon />}
                 >
                         Comissões
-                </Button>                   
+                </Button>
+                <Button 
+                    onClick={handleLogout}
+                    variant="contained"                    
+                    startIcon={<LogoutIcon />}
+                >
+                        Sair
+                </Button>
+                                   
             </Stack>
         </div>
     )    

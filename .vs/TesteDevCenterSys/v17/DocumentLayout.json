@@ -51,8 +51,7 @@
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-09T04:25:10.86Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -62,7 +61,7 @@
               "RelativeDocumentMoniker": "TesteDevCenterSys\\Services\\UsuarioService.cs",
               "ToolTip": "C:\\_Dev\\Projetos\\DotNet\\TesteDevCenterSys\\TesteDevCenterSys\\Services\\UsuarioService.cs",
               "RelativeToolTip": "TesteDevCenterSys\\Services\\UsuarioService.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAQwCcAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAYwBkAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-09T06:36:33.08Z",
               "EditorCaption": ""
@@ -77,8 +76,7 @@
               "RelativeToolTip": "TesteDevCenterSys\\Controllers\\VendaController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-09T06:34:42.032Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-09T06:34:42.032Z"
             },
             {
               "$type": "Document",
@@ -90,8 +88,7 @@
               "RelativeToolTip": "TesteDevCenterSys\\Controllers\\ProdutoController.cs",
               "ViewState": "AgIAADIAAAAAAAAAAAAIwAoAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-09T06:33:54.967Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-09T06:33:54.967Z"
             },
             {
               "$type": "Document",
@@ -103,8 +100,7 @@
               "RelativeToolTip": "TesteDevCenterSys\\Data\\Dtos\\CreateVendedorDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-09T05:15:14.925Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-09T05:15:14.925Z"
             },
             {
               "$type": "Document",
@@ -116,8 +112,7 @@
               "RelativeToolTip": "TesteDevCenterSys\\Controllers\\VendedorController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-09T05:14:23.031Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-09T05:14:23.031Z"
             },
             {
               "$type": "Document",
@@ -129,8 +124,7 @@
               "RelativeToolTip": "TesteDevCenterSys\\Data\\Dtos\\ReadVendedorDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-09T05:14:03.585Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-09T05:14:03.585Z"
             }
           ]
         }

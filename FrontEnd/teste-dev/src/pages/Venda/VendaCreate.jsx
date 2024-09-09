@@ -246,7 +246,6 @@ const VendaCreate = () => {
             <section>
             <List
                 texto="Itens da Venda"
-                rotaVoltar = "/"
                 adicionarBtDesabilitado={true}
                 editarDesabilitado={true}
                 deletarDesabilitado={false}
@@ -268,7 +267,9 @@ const VendaCreate = () => {
                     >
                         Finalizar Venda
                     </Button>
-                    <Navegacao/> 
+                    <Navegacao
+                        rotaVoltar="/"
+                    /> 
                 </Stack>
             </Box>
             {<Snackbar

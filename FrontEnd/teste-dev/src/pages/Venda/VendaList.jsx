@@ -6,7 +6,7 @@ import ApiService from "../../services/ApiService";
 const VendaList = () => {
 
     const columns = [
-        { field: 'dataVenda', headerName: 'Data da Venda', width: 130 },
+        { field: 'dataVenda', headerName: 'Data da Venda', width: 150 },
         {
             field: 'totalVenda',
             headerName: 'Valor Total',
